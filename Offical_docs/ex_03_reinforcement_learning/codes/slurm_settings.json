@@ -1,0 +1,6 @@
+{
+    "partition":"day",
+    "time":"24:00:00",
+    "gres": "gpu:1",
+    "mem_per_cpu": "4G"
+}

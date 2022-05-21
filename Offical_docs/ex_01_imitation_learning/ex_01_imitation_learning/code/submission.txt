@@ -1,0 +1,5 @@
+Team name:
+Name 1:
+Name 2:
+
+Score after running 'python main.py --score':
