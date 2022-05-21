@@ -10,6 +10,9 @@
 
 > 本专栏的主要学习资料即来自于蒂宾根大学的自动驾驶课程，本专栏的 [Github](https://github.com/Alexbeast-CN/AD_study)
 
+- 多伦多大学的自动驾驶课程(Launch Your Career in Self-Driving Cars. Be at the forefront of the autonomous driving industry.)
+  - [课程视频 | Coursera](https://www.coursera.org/specializations/self-driving-cars)
+
 - 德国波恩大学的自动驾驶课程 (Techniques for Self-Driving Cars" taught at the University of Bonn)
   - [课程视频 | Youtube](https://www.youtube.com/watch?v=EBFlmHqgezM&list=PLgnQpQtFTOGQo2Z_ogbonywTg8jxCI9pD)
   - [课程主页](https://www.ipb.uni-bonn.de/sdc-2020/)
@@ -19,7 +22,16 @@
   - [课程主页](https://deeplearning.mit.edu/)
   - [代码仓库 | Github](https://github.com/lexfridman/mit-deep-learning)
 
-## 2. 比赛
+## 2. 模拟器
+
+> 由于自动驾驶的模拟器实在是太多了，所以这里暂时就介绍几个我个人觉得比较好用且论文里常见的。当然可能还有一些模拟器也很常见但我没有介绍到，是因为我没有用过。
+
+- [Carla](https://carla.org/) 应该是目前来说用于强化学习单车智能最好的模拟器。
+- [TORCS](https://sourceforge.net/projects/torcs/) 一个开源的赛车游戏，因为开源所以被很多人用来做强化学习训练自动驾驶 AI。
+- [MetaDrive](https://github.com/metadriverse/metadrive) 港中大开发的一款自动驾驶模拟器，支持多智体的开发。由于港中大的自动驾驶课题组都在用，所以论文找起来很方便。
+
+
+## 3. 比赛
 
 - [CARLA Autonomous Driving Challenge](https://leaderboard.carla.org/)
   - 基于 Carla 模拟器
@@ -52,7 +64,7 @@
 
 ![DeepRacer](./pics/deepracer.png)
 
-## 3. 论文
+## 4. 论文
 
 > 读论文是学习自动驾驶的必经之路。
 
