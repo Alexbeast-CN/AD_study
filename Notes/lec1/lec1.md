@@ -107,7 +107,7 @@
 
 ![Vislab](./pics/vislab2.jpg)
 
-> - 详情请看 [论文](https://www.researchgate.net/publication/229593732_The_VisLab_Intercontinental_Autonomous_Challenge_13000_km_3_months_no_driver)
+> 详情请看 [论文](https://www.researchgate.net/publication/229593732_The_VisLab_Intercontinental_Autonomous_Challenge_13000_km_3_months_no_driver)
 
 ### 2.5 第三次技术革新
 
