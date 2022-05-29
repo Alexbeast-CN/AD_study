@@ -1,12 +1,14 @@
+#! https://zhuanlan.zhihu.com/p/521799809
 # AD2. 模仿学习(Imitation Learning)
 
 > 在阅读本文之前需提前掌握深度学习的基础知识。
 
-本文的参考资料：
+reference：
 - Self-Driving Lectures, University of Tübingen[Youtube | Imitation Learning: Approaches to Self-Driving](https://www.youtube.com/watch?v=twMHsKYtHKA&list=PL05umP7R6ij321zzKXK6XCQXAaaYjQbzr&index=4)
-- UC Berkeley cs182 [Youtube | Learning-Based Control & Imitation](https://www.youtube.com/watch?v=kGc8jOy5_zY) [PPT](https://cs182sp21.github.io/static/slides/lec-14.pdf)
-- UC Berkeley cs285 [Youtube | Supervised Learning of Behaviors](https://www.youtube.com/watch?v=H_z7vxGhsQk&list=PL_iWQOsE6TfURIIhCrlt-wj9ByIVpbfGc&index=7) [PPT](https://rail.eecs.berkeley.edu/deeprlcourse/static/slides/lec-2.pdf)
+- UC Berkeley cs182 [Youtube | Learning-Based Control & Imitation](https://www.youtube.com/watch?v=kGc8jOy5_zY), [PPT](https://cs182sp21.github.io/static/slides/lec-14.pdf)
+- UC Berkeley cs285 [Youtube | Supervised Learning of Behaviors](https://www.youtube.com/watch?v=H_z7vxGhsQk&list=PL_iWQOsE6TfURIIhCrlt-wj9ByIVpbfGc&index=7), [PPT](https://rail.eecs.berkeley.edu/deeprlcourse/static/slides/lec-2.pdf)
 - [arXiv Book | An Algorithmic Perspective on Imitation Learning](https://arxiv.org/abs/1811.06711)
+- [arXiv Paper | End-to-end Driving via Conditional Imitation Learning](https://arxiv.org/abs/1710.02410)
 
 > cs285 较 cs182 来说关于 Imitation Learning 部分讲的更全一点。
 
@@ -83,11 +85,45 @@ DAgger 是通过将 On-policy data 标记并作为训练数据的方法来避免
 
 2016 年的时候，NVDIA 将 DAgger 应用于自动驾驶模仿学习，实现了端到端学习的自动驾驶。车辆使用三个摄像头，两两之间有三十度的夹角，这样的布局外加 CNN 便实现了在道路上的正确角度转向。
 
-![NVDIA PilotNet](./pics/nvdia-dave2.jpg)
+![NVDIA PilotNet](./pics/nvdia-dave.png)
 
 ## 3. 条件模仿学习
 
+模仿学习在自动驾驶中难以被用于城市环境的一个原因是，之前的框架并没有考虑到驾驶通常需要配合导航系统才有意义。最初的研究往往只专注于 agent 能否通过演示者的动作而习得一个驾驶策略，该策略能够在不同的驾驶环境下保证驾驶的安全。因此汽车在十字路口环境这种有多种驾驶选择的路段往往会出现问题。
+
+![](pics/skier.png)
+
+为了解决该问题，论文提出了在训练数据中添加一些高级条件指令，如：“在下一个路口左转”，这些高级指令可以是由车内的乘客提出，也可以是由车辆从 GPS导航系统获取的。通过监督学习获得在条件和传感器输入的双重信息下得出驾驶动作（方向盘，加速，刹车）。由此在遇到模棱两可的状态时，系统便会依据条件指令得出一个确定的驾驶动作。
+
+![](pics/high_level.jpg)
+
+### 3.1 算法
+
+算法是基于行为克隆的，因此大体框架与行为克隆相同。区别在于系统中被添加了一个额外的信息，条件指令 $c_i$。因此便有了以下区别：
 
 
-## 4. 逆强化学习
+算法的框架有两种形式，如下图所示：
 
+![(a)](pics/net_arch.jpg)
+
+![(b)](pics/net_arch_branch.jpg)
+
+框架中的 Measurements 在文中指的是车辆的速度，而两个框架的主要区别就是在于条件指令被应用的时机。在第一个框架中，模型的输入量就是 图片信息 $i$，测量信息 $m$，以及指令 $i$ 的联合信息。而第二个框架则是先按照正常的行为模仿框架训练，但是在最后选择动作的时候添加一个新的模型，由上一个模型的输出量作为输入，外加一个指令，来得到车辆的动作。
+
+最后，使用监督学习常用的损失函数来使得驾驶策略接近演示策略。
+
+### 3.2 应用
+
+在论文 [End-to-end Driving via Conditional Imitation Learning](https://arxiv.org/abs/1710.02410) 中，Codevilla 在仿真平台 Carla 和 真实环境中都做了测试，实验结果表明该算法的成功率和干预率都高于基准算法。
+
+![Results](pics/res.png)
+
+![实验环境截图](pics/ex.png)
+
+此外，本方法也被其他的论文所应用，如 [Neural Attention Fields for End-to-End Autonomous Driving](https://openaccess.thecvf.com/content/ICCV2021/html/Chitta_NEAT_Neural_Attention_Fields_for_End-to-End_Autonomous_Driving_ICCV_2021_paper.html)
+
+
+> 另外还有一种更高级的模仿学习算法，逆强化学习。该算法将在以后的文章中详细的介绍。
+
+- 上篇: [AD1. 自动驾驶的简介和历史](https://zhuanlan.zhihu.com/p/518099071)
+- 下篇: []()
