@@ -126,4 +126,4 @@ DAgger 是通过将 On-policy data 标记并作为训练数据的方法来避免
 > 另外还有一种更高级的模仿学习算法，逆强化学习。该算法将在以后的文章中详细的介绍。
 
 - 上篇: [AD1. 自动驾驶的简介和历史](https://zhuanlan.zhihu.com/p/518099071)
-- 下篇: []()
+- 下篇: [AD3. 直接感知 (Direct Perception)](https://zhuanlan.zhihu.com/p/524371862)
