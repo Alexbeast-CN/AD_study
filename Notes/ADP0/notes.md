@@ -43,7 +43,7 @@ cd ..
 这里我写一个我个人认为比较重要的点，新手在运行 Carla 程序的时候很有可能会遇到 `import carla` 报错的情况。要解决这个问题只需要将 carla 的蟒蛇蛋 (.egg 文件) 安装到你的 anaconda 环境中即可，如：
 
 ```
-export CARLA_ROOT = <Your path to Carla>
+export CARLA_ROOT =<Your path to Carla>
 easy_install ${CARLA_ROOT}/PythonAPI/carla/dist/carla-0.9.10-py3.7-linux-x86_64.egg
 ```
 
@@ -62,6 +62,8 @@ conda create -n transfuser python=3.7
 conda activate transfuser
 pip3 install -r requirements.txt
 ```
+
+此外，还需额外安装 Pytorch 
 
 **下载数据集:**
 
@@ -102,7 +104,7 @@ rm model_ckpt/models.zip
 打开 Carla Server：
 
 ```
-<Path to carla>/CarlaUE4.sh --world-port=2000 -opengl
+<Path to carla>/CarlaUE4.sh -quality-level=Epic -world-port=2000 -resx=800 -resy=600 -opengl
 ```
 
 然后另开一个终端：
@@ -116,6 +118,7 @@ gedit leaderboard/scripts/run_evaluation.sh
 并对其进行修改，将等号后面的内容替换为下面的你内容：
 
 ```
+export ROUTES=leaderboard/data/evaluation_routes/routes_town05_long.xml
 export TEAM_AGENT=leaderboard/team_code/transfuser_agent.py
 export TEAM_CONFIG=model_ckpt/transfuser
 export CHECKPOINT_ENDPOINT=results/transfuser_result.json
@@ -125,7 +128,9 @@ export SCENARIOS=leaderboard/data/scenarios/town05_all_scenarios.json
 之后：
 
 ```
-leaderboard/scripts/run_evaluation.sh
+CUDA_VISIBLE_DEVICES=0 ./leaderboard/scripts/run_evaluation.sh
 ```
 
 程序正常运行后，你就可以看到一个自动驾驶的车辆在 Carla 挑战赛的场景中运行的画面了。
+
+- 下篇：[ADP1. Carla 排行榜参赛程序梳理](https://zhuanlan.zhihu.com/p/536102804)
