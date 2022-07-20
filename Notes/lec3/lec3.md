@@ -232,4 +232,4 @@ $$u(t)=K_{p}e(t)+K_{i}\int_{0}^{t}e(\tau)d\tau+K_{d}\frac{de(t)}{dt},$$
 此方法在现实世界的 1/5 大小的车辆上得到了验证。
 
 - 上篇：[AD2. 模仿学习(Imitation Learning)](https://zhuanlan.zhihu.com/p/521799809)
-- 下篇：[]()
+- 下篇：[AD4. 感知模块 - 目标检测](https://zhuanlan.zhihu.com/p/544239651)

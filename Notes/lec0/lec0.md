@@ -6,7 +6,7 @@
 - 德国蒂宾根大学的自动驾驶课程 (Self-Driving Cars, lectureed by Prof. Andreas Geiger, University of Tübingen)
   - [课程视频 | Youtube](https://www.youtube.com/playlist?list=PL05umP7R6ij321zzKXK6XCQXAaaYjQbzr)
   - [课程主页](https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/autonomous-vision/lectures/self-driving-cars/)
-  - [其他课程资料 | 百度网盘](https://pan.baidu.com/s/1OsKPZ9KUTlLO26SHR_-yTg)，提取码：a69d
+  - [其他课程资料 | 百度网盘](https://pan.baidu.com/s/1sJshEJ7GC91vAscqzGULoQ)，提取码：xbej
 
 > 本专栏的主要学习资料即来自于蒂宾根大学的自动驾驶课程，本专栏的 [Github](https://github.com/Alexbeast-CN/AD_study)
 
